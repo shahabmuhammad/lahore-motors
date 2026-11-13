@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import { createElement, FormEvent, useMemo, useState } from "react";
 import {
   FilerStatus,
   formatPkr,
@@ -31,13 +31,6 @@ const deliveryStages = [
   "In Transit",
   "Ready at Dealership",
   "Delivered to Customer",
-];
-
-const quickQuestions = [
-  "Compare fuel costs",
-  "Current prices",
-  "Financing options",
-  "Track an order",
 ];
 
 function Icon({
@@ -74,18 +67,6 @@ function Icon({
       <>
         <circle cx="12" cy="12" r="9" />
         <path d="M12 7v5l3 2" />
-      </>
-    ),
-    chat: (
-      <>
-        <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z" />
-      </>
-    ),
-    close: <path d="m18 6-12 12M6 6l12 12" />,
-    send: (
-      <>
-        <path d="m22 2-7 20-4-9-9-4Z" />
-        <path d="M22 2 11 13" />
       </>
     ),
     check: <path d="m5 12 4 4L19 6" />,
@@ -231,14 +212,6 @@ export default function Home() {
     paymentType: "Half Payment",
   });
   const [bookingResult, setBookingResult] = useState<Order | null>(null);
-  const [chatOpen, setChatOpen] = useState(false);
-  const [chatInput, setChatInput] = useState("");
-  const [chatMessages, setChatMessages] = useState([
-    {
-      role: "assistant",
-      text: "Welcome to Lahore Motors. I can help with Toyota specs, estimated running costs, pricing and financing. I’m a demo assistant, so please confirm current offers with our team.",
-    },
-  ]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const calculatorRows = useMemo(
@@ -315,50 +288,7 @@ export default function Home() {
     setBooking((current) => ({ ...current, [field]: value }));
   }
 
-  function getAssistantReply(message: string) {
-    const question = message.toLowerCase();
-    if (question.includes("track") || question.includes("order")) {
-      return "You can check a sample delivery status in the Order Tracker. Try demo PO LM-26-0418, LM-26-0832 or LM-26-1027. Real customer orders aren’t connected in this demo.";
-    }
-    if (
-      question.includes("finance") ||
-      question.includes("lease") ||
-      question.includes("ijarah") ||
-      question.includes("hbl")
-    ) {
-      return "Meezan Bank Ijarah and HBL auto financing are options customers commonly explore. Eligibility, rate, tenure and current campaigns vary by bank; please request a personalized quote from our finance desk.";
-    }
-    if (question.includes("fuel") || question.includes("economy")) {
-      return "For the estimates shown here, Yaris returns about 12 km/L in city and 16 on highway, Corolla 10 and 14, and Fortuner diesel 8 and 11. These vary with traffic, driving style and maintenance. Try the running-cost calculator with your own fuel rate.";
-    }
-    if (
-      question.includes("price") ||
-      question.includes("cost") ||
-      question.includes("wht")
-    ) {
-      return `Illustrative ex-factory estimates: Yaris ${formatPkr(vehicles[0].price)}, Corolla ${formatPkr(vehicles[1].price)}, Fortuner ${formatPkr(vehicles[2].price)}. Withholding tax depends on engine size and filer status. See the price cards for the estimated breakdown; confirm today's price with the dealership.`;
-    }
-    const vehicle = vehicles.find((item) =>
-      question.includes(item.name.toLowerCase()),
-    );
-    if (vehicle) {
-      return `${vehicle.name} ${vehicle.variant}: ${vehicle.engine}, ${vehicle.horsepower} hp, ${vehicle.torque} Nm and ${vehicle.transmission}. Estimated fuel economy is ${vehicle.cityKmPerLitre} km/L city and ${vehicle.highwayKmPerLitre} km/L highway.`;
-    }
-    return "I can help with Yaris, Corolla and Fortuner specifications, estimated prices, fuel costs, bank financing options and sample order tracking. What would you like to know?";
-  }
-
-  function sendChatMessage(message = chatInput) {
-    const trimmed = message.trim();
-    if (!trimmed) return;
-    const reply = getAssistantReply(trimmed);
-    setChatMessages((current) => [
-      ...current,
-      { role: "user", text: trimmed },
-      { role: "assistant", text: reply },
-    ]);
-    setChatInput("");
-  }
-
+  const metamodEmbedKey = process.env.NEXT_PUBLIC_METAMOD_EMBED_KEY;
   const selectedBookingVehicle =
     vehicles.find((vehicle) => vehicle.id === booking.vehicleId) ?? vehicles[1];
 
@@ -1068,76 +998,22 @@ export default function Home() {
         <span className="footer-year">© 2026</span>
       </footer>
 
-      <div className="chat-widget">
-        {chatOpen && (
-          <section className="chat-panel" aria-label="Lahore Motors assistant">
-            <div className="chat-header">
-              <span className="chat-avatar"><Icon name="spark" size={19} /></span>
-              <div>
-                <strong>LM assistant</strong>
-                <span><span className="online-dot" /> Here to help · Demo</span>
-              </div>
-              <button
-                type="button"
-                className="chat-close"
-                aria-label="Close chat"
-                onClick={() => setChatOpen(false)}
-              >
-                <Icon name="close" size={19} />
-              </button>
-            </div>
-            <div className="chat-disclosure">
-              Automated demo assistant. Answers may be incomplete; verify prices,
-              financing and order details with our team.
-            </div>
-            <div className="chat-messages" aria-live="polite">
-              {chatMessages.map((message, index) => (
-                <p
-                  key={`${message.role}-${index}`}
-                  className={`chat-bubble ${message.role === "user" ? "chat-bubble-user" : ""}`}
-                >
-                  {message.text}
-                </p>
-              ))}
-            </div>
-            <div className="chat-quick-prompts">
-              {quickQuestions.map((question) => (
-                <button type="button" key={question} onClick={() => sendChatMessage(question)}>
-                  {question}
-                </button>
-              ))}
-            </div>
-            <form
-              className="chat-input"
-              onSubmit={(event) => {
-                event.preventDefault();
-                sendChatMessage();
-              }}
-            >
-              <label className="sr-only" htmlFor="chat-question">Ask a question</label>
-              <input
-                id="chat-question"
-                value={chatInput}
-                onChange={(event) => setChatInput(event.target.value)}
-                placeholder="Ask us anything…"
-              />
-              <button type="submit" aria-label="Send message" disabled={!chatInput.trim()}>
-                <Icon name="send" size={18} />
-              </button>
-            </form>
-          </section>
-        )}
-        <button
-          type="button"
-          className={`chat-launcher ${chatOpen ? "chat-launcher-open" : ""}`}
-          aria-label={chatOpen ? "Close dealership assistant" : "Open dealership assistant"}
-          aria-expanded={chatOpen}
-          onClick={() => setChatOpen((open) => !open)}
-        >
-          <Icon name={chatOpen ? "close" : "chat"} size={22} />
-          {!chatOpen && <span>Ask LM</span>}
-        </button>
-      </div>
+      {metamodEmbedKey
+        ? createElement(
+            "metamod-chat",
+            {
+              flow_id: "1916eb07-b1ab-4ac4-916d-724ae0d8ab0b",
+              host_url: "https://staging.metamod.ai",
+              window_title: "Toyota Support Agent",
+              api_key: metamodEmbedKey,
+            },
+            "Toyota Support Agent chat is loading. If it does not appear, the chat could not be loaded.",
+          )
+        : (
+            <p className="metamod-chat-configuration-error" role="status">
+              Toyota Support Agent is not configured in this environment.
+            </p>
+          )}
     </main>
   );
 }
