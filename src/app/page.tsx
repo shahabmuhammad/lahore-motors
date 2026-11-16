@@ -337,7 +337,7 @@ export default function Home() {
             className="nav-cta"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Book a Toyota <Icon name="arrow" size={17} />
+            Book a Car <Icon name="arrow" size={17} />
           </a>
         </nav>
       </header>
@@ -346,7 +346,7 @@ export default function Home() {
         <div className="hero-copy">
           <span className="eyebrow">
             <span className="eyebrow-line" />
-            YOUR TOYOTA, YOUR WAY
+            YOUR CAR, YOUR WAY
           </span>
           <h1>
             Made for the
@@ -354,7 +354,7 @@ export default function Home() {
             <span>long way home.</span>
           </h1>
           <p>
-            Find the right Toyota for every road ahead. Thoughtful guidance,
+            Find the right car for every road ahead. Thoughtful guidance,
             transparent estimates and a team that makes the journey feel easy.
           </p>
           <div className="hero-actions">
@@ -367,7 +367,7 @@ export default function Home() {
           </div>
           <div className="hero-footnote">
             <span className="hero-dot" />
-            Your Toyota dealership in Lahore
+            Your car dealership in Lahore
           </div>
         </div>
         <div className="hero-visual">
@@ -389,7 +389,7 @@ export default function Home() {
         </div>
         <div className="hero-bottom">
           <span>EST. LAHORE · PAKISTAN</span>
-          <span>TOYOTA, WITH A LITTLE MORE HEART.</span>
+          <span>CARS, WITH A LITTLE MORE HEART.</span>
         </div>
       </section>
 
@@ -398,7 +398,7 @@ export default function Home() {
           <span className="intro-number">01</span>
           <div>
             <strong>Find your fit</strong>
-            <span>Explore the Toyota range</span>
+            <span>Explore the car range</span>
           </div>
         </div>
         <div className="intro-item">
@@ -656,7 +656,7 @@ export default function Home() {
             <span className="eyebrow-line" />
             EVERY STEP, IN THE KNOW
           </span>
-          <h2>Your Toyota is<br /><em>on its way.</em></h2>
+          <h2>Your car is<br /><em>on its way.</em></h2>
           <p>
             A little anticipation is part of the journey. Check a sample order
             or get in touch with our team for a private update.
@@ -753,7 +753,7 @@ export default function Home() {
             <span className="booking-step-line" />
             <span className={bookingStep === 2 ? "booking-step-active" : ""}>02</span>
             <div>
-              <strong>{bookingStep === 1 ? "A little about you" : "Choose your Toyota"}</strong>
+              <strong>{bookingStep === 1 ? "A little about you" : "Choose your car"}</strong>
               <span>{bookingStep === 1 ? "Your details" : "Your preferences"}</span>
             </div>
           </div>
@@ -807,7 +807,7 @@ export default function Home() {
           ) : (
             <>
               <div className="booking-form-header">
-                <span>ENQUIRE ABOUT YOUR NEXT TOYOTA</span>
+                <span>ENQUIRE ABOUT YOUR NEXT CAR</span>
                 <span>STEP {bookingStep} OF 2</span>
               </div>
               <form className="booking-form" onSubmit={submitBooking}>
@@ -893,7 +893,7 @@ export default function Home() {
                       doesn’t send or store them.
                     </div>
                     <button className="button button-primary form-next" type="submit">
-                      Continue to your Toyota <Icon name="arrow" size={18} />
+                      Continue to your car <Icon name="arrow" size={18} />
                     </button>
                   </>
                 ) : (
@@ -903,7 +903,7 @@ export default function Home() {
                       <p>Choose a model and how you’d like to pay.</p>
                     </div>
                     <fieldset className="vehicle-picker">
-                      <legend>CHOOSE A TOYOTA</legend>
+                      <legend>CHOOSE A CAR</legend>
                       <div className="booking-model-list">
                         {vehicles.map((vehicle) => (
                           <label
@@ -983,7 +983,7 @@ export default function Home() {
         <div className="closing-mark"><Icon name="location" size={21} /></div>
         <div>
           <span>WHEN YOU’RE READY, WE’RE RIGHT HERE.</span>
-          <strong>Come by. Let’s talk Toyota.</strong>
+          <strong>Come by. Let’s talk cars.</strong>
         </div>
         <a href="tel:+9242111222213">Call our team <Icon name="arrow" size={17} /></a>
       </section>
@@ -993,8 +993,8 @@ export default function Home() {
           <span className="brand-monogram" aria-hidden="true">LM</span>
           <span className="brand-wordmark"><strong>LAHORE</strong><span>MOTORS</span></span>
         </a>
-        <span className="footer-copy">An independent Toyota dealership in Lahore, Pakistan.</span>
-        <span className="footer-disclaimer">Illustrative demo · Not affiliated with or endorsed by Toyota or Indus Motor Company.</span>
+        <span className="footer-copy">An independent car dealership in Lahore, Pakistan.</span>
+        <span className="footer-disclaimer">Illustrative demo · Not affiliated with or endorsed by any car manufacturer.</span>
         <span className="footer-year">© 2026</span>
       </footer>
 
@@ -1004,14 +1004,14 @@ export default function Home() {
             {
               flow_id: "1916eb07-b1ab-4ac4-916d-724ae0d8ab0b",
               host_url: "https://staging.metamod.ai",
-              window_title: "Toyota Support Agent",
+              window_title: "Car Support Agent",
               api_key: metamodEmbedKey,
             },
-            "Toyota Support Agent chat is loading. If it does not appear, the chat could not be loaded.",
+            "Car Support Agent chat is loading. If it does not appear, the chat could not be loaded.",
           )
         : (
             <p className="metamod-chat-configuration-error" role="status">
-              Toyota Support Agent is not configured in this environment.
+              Car Support Agent is not configured in this environment.
             </p>
           )}
     </main>

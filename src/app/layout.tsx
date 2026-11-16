@@ -3,9 +3,9 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Lahore Motors | A Better Toyota Experience",
+  title: "Lahore Motors | A Better Car Experience",
   description:
-    "Explore Toyota Yaris, Corolla and Fortuner at Lahore Motors. Compare estimated prices, calculate running costs and start your booking enquiry.",
+    "Explore the Yaris, Corolla and Fortuner at Lahore Motors. Compare estimated prices, calculate running costs and start your booking enquiry.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,6 +1,6 @@
 # Lahore Motors
 
-A responsive Next.js and TypeScript dealership demo built with Tailwind CSS. It includes a Toyota model showcase, indicative price/WHT estimates, a fuel-cost calculator, sample order tracking, the MetaMod Toyota Support Agent widget, and a simulated two-step booking enquiry. The site exports as static files for GitHub Pages.
+A responsive Next.js and TypeScript dealership demo built with Tailwind CSS. It includes a car model showcase, indicative price/WHT estimates, a fuel-cost calculator, sample order tracking, the MetaMod Car Support Agent widget, and a simulated two-step booking enquiry. The site exports as static files for GitHub Pages.
 
 ## Run locally
 
@@ -26,7 +26,7 @@ npm run build
 - Booking enquiries return a simulated purchase reference. Name, CNIC, and phone are validated in the browser and never leave the browser; no customer details or bookings are persisted. Generated references only exist in the current page session.
 - The embedded chat widget loads from MetaMod's staging host. For local development, set `NEXT_PUBLIC_METAMOD_EMBED_KEY` in `.env.local`; for GitHub Pages, add a repository Actions secret named `METAMOD_EMBED_KEY`. The key is included in the public page because the browser widget needs it, so use an embed key intended for client-side use and restrict it to the published site in MetaMod if supported.
 - Before production, switch the widget to MetaMod's production host if available, connect a secure order-management service, confirm all commercial/tax information, and provide appropriate privacy disclosures.
-- Lahore Motors is presented as an independent dealership concept and is not affiliated with or endorsed by Toyota or Indus Motor Company.
+- Lahore Motors is presented as an independent dealership concept and is not affiliated with or endorsed by any car manufacturer.
 
 ## GitHub Pages deployment
 
