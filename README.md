@@ -24,8 +24,8 @@ npm run build
 - The 2026 vehicle prices, withholding-tax rates, fuel economy, and fuel prices are illustrative estimates. Confirm current prices, tax rules, specifications, and fuel costs with the dealership before relying on them.
 - Sample tracker records are available for `LM-26-0418`, `LM-26-0832`, and `LM-26-1027`. The demo CNIC `00000-0000000-0` also resolves to a sample record. No live dealer, plant, or customer-order system is connected.
 - Booking enquiries return a simulated purchase reference. Name, CNIC, and phone are validated in the browser and never leave the browser; no customer details or bookings are persisted. Generated references only exist in the current page session.
-- The embedded chat widget loads from MetaMod's staging host. For local development, set `NEXT_PUBLIC_METAMOD_EMBED_KEY` in `.env.local`; for GitHub Pages, add a repository Actions secret named `METAMOD_EMBED_KEY`. The key is included in the public page because the browser widget needs it, so use an embed key intended for client-side use and restrict it to the published site in MetaMod if supported.
-- Before production, switch the widget to MetaMod's production host if available, connect a secure order-management service, confirm all commercial/tax information, and provide appropriate privacy disclosures.
+- The embedded chat widget loads from MetaMod's production host (`app.metamod.ai`). For local development, set `NEXT_PUBLIC_METAMOD_EMBED_KEY` in `.env.local`; for GitHub Pages, add a repository Actions secret named `METAMOD_EMBED_KEY`. The key is included in the public page because the browser widget needs it, so use an embed key intended for client-side use and restrict it to the published site in MetaMod if supported.
+- Before production, connect a secure order-management service, confirm all commercial/tax information, and provide appropriate privacy disclosures.
 - Lahore Motors is presented as an independent dealership concept and is not affiliated with or endorsed by any car manufacturer.
 
 ## GitHub Pages deployment

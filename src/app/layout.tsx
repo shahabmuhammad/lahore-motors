@@ -14,7 +14,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         {children}
         <Script
-          src="https://staging.metamod.ai/assets/metamod-embedded-chat/loader/v1/loader.min.js"
+          src="https://app.metamod.ai/assets/metamod-embedded-chat/loader/v1/loader.min.js"
           integrity="sha384-6pyfuX5Bg8Yya06CiZp00gfZq6ZENMKpQJziZi1pJtVJQgEndBxGBT+KMdxVd/KO"
           crossOrigin="anonymous"
           strategy="afterInteractive"

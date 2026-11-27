@@ -1002,8 +1002,8 @@ export default function Home() {
         ? createElement(
             "metamod-chat",
             {
-              flow_id: "1916eb07-b1ab-4ac4-916d-724ae0d8ab0b",
-              host_url: "https://staging.metamod.ai",
+              flow_id: "d8d7a25e-87fc-4602-9285-7b907f8c5d1f",
+              host_url: "https://app.metamod.ai",
               window_title: "Car Support Agent",
               api_key: metamodEmbedKey,
             },
